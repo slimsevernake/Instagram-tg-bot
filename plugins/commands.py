@@ -36,9 +36,9 @@ HELP=Config.HELP
 
 @Client.on_message(filters.command("start") & filters.private)
 async def start(bot, cmd):
-	if str(cmd.from_user.id) 	
+	if str(cmd) 	
 		await cmd.reply_text(
-			HOME_TEXT.format(cmd.from_user.first_name, cmd.from_user.id, USER, USER, USER, OWNER), 
+			HOME_TEXT.format(cmd.from_user.first_name, cmd, USER, USER, USER, OWNER), 
 			disable_web_page_preview=True,
 			reply_markup=InlineKeyboardMarkup(
 				[
@@ -61,7 +61,7 @@ async def start(bot, cmd):
 		)
 	else:
 		await cmd.reply_text(
-			HOME_TEXT_OWNER.format(cmd.from_user.first_name, cmd.from_user.id), 
+			HOME_TEXT_OWNER.format(cmd.from_user.first_name, cmd), 
 			disable_web_page_preview=True,
 			reply_markup=InlineKeyboardMarkup(
 				[
@@ -106,9 +106,9 @@ async def help(bot, cmd):
 
 @Client.on_message(filters.command("restart") & filters.private)
 async def stop(bot, cmd):
-	if str(cmd.from_user.id) 	
+	if str(cmd) 	
 		await cmd.reply_text(
-			HOME_TEXT.format(cmd.from_user.first_name, cmd.from_user.id, USER, USER, USER, OWNER), 
+			HOME_TEXT.format(cmd.from_user.first_name, cmd, USER, USER, USER, OWNER), 
 			disable_web_page_preview=True,
 			reply_markup=InlineKeyboardMarkup(
 				[
@@ -132,7 +132,7 @@ async def stop(bot, cmd):
 		return
 	msg = await bot.send_message(
 		text="Restarting your bot..",
-		chat_id=cmd.from_user.id
+		chat_id=cmd
 		)
 	await asyncio.sleep(2)
 	await msg.edit("All Processes Stopped and Restarted")

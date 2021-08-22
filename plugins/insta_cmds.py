@@ -60,9 +60,9 @@ buttons=InlineKeyboardMarkup(
 
 @Client.on_message(filters.command("posts") & filters.private)
 async def post(bot, message):
-    if str(message.from_user.id) 
+    if str(message) 
         await message.reply_text(
-            HOME_TEXT.format(message.from_user.first_name, message.from_user.id, USER, USER, USER, OWNER),
+            HOME_TEXT.format(message.from_user.first_name, message, USER, USER, USER, OWNER),
             reply_markup=buttons,
 			disable_web_page_preview=True
         )
@@ -81,7 +81,7 @@ async def post(bot, message):
             await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
             return
     await bot.send_message(
-            message.from_user.id,
+            message,
             f"What type of post do you want to download?.",
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -96,9 +96,9 @@ async def post(bot, message):
 
 @Client.on_message(filters.command("igtv") & filters.private)
 async def igtv(bot, message):
-    if str(message.from_user.id) 
+    if str(message) 
         await message.reply_text(
-            HOME_TEXT.format(message.from_user.first_name, message.from_user.id, USER, USER, USER, OWNER),
+            HOME_TEXT.format(message.from_user.first_name, message, USER, USER, USER, OWNER),
             reply_markup=buttons,
 			disable_web_page_preview=True
         )
@@ -135,9 +135,9 @@ async def igtv(bot, message):
 
 @Client.on_message(filters.command("followers") & filters.private)
 async def followers(bot, message):
-    if str(message.from_user.id) 
+    if str(message) 
         await message.reply_text(
-            HOME_TEXT.format(message.from_user.first_name, message.from_user.id, USER, USER, USER, OWNER),
+            HOME_TEXT.format(message.from_user.first_name, message, USER, USER, USER, OWNER),
             reply_markup=buttons,
 			disable_web_page_preview=True
         )
@@ -158,7 +158,7 @@ async def followers(bot, message):
     profile = Profile.from_username(insta.context, username)
     name=profile.full_name
     m=await message.reply_text(f"Fetching Followers list of <code>@{username}</code>")
-    chat_id=message.from_user.id
+    chat_id=message
     f = profile.get_followers()
     followers=f"**Followers List for {name}**\n\n"
     for p in f:
@@ -180,9 +180,9 @@ async def followers(bot, message):
 
 @Client.on_message(filters.command("followees") & filters.private)
 async def followees(bot, message):
-    if str(message.from_user.id) 
+    if str(message) 
         await message.reply_text(
-            HOME_TEXT.format(message.from_user.first_name, message.from_user.id, USER, USER, USER, OWNER),
+            HOME_TEXT.format(message.from_user.first_name, message, USER, USER, USER, OWNER),
             reply_markup=buttons,
 			disable_web_page_preview=True
         )
@@ -203,7 +203,7 @@ async def followees(bot, message):
     profile = Profile.from_username(insta.context, username)
     name=profile.full_name
     m=await message.reply_text(f"Fetching Followees list of <code>@{username}</code>")
-    chat_id=message.from_user.id
+    chat_id=message
     f = profile.get_followees()
     followees=f"**Followees List for {name}**\n\n"
     for p in f:
@@ -227,9 +227,9 @@ async def followees(bot, message):
 
 @Client.on_message(filters.command("fans") & filters.private)
 async def fans(bot, message):
-    if str(message.from_user.id) 
+    if str(message) 
         await message.reply_text(
-            HOME_TEXT.format(message.from_user.first_name, message.from_user.id, USER, USER, USER, OWNER),
+            HOME_TEXT.format(message.from_user.first_name, message, USER, USER, USER, OWNER),
             reply_markup=buttons,
 			disable_web_page_preview=True
         )
@@ -250,7 +250,7 @@ async def fans(bot, message):
     profile = Profile.from_username(insta.context, username)
     name=profile.full_name
     m=await message.reply_text(f"Fetching list of followees of <code>@{username}</code> who follows <code>@{username}</code>.")
-    chat_id=message.from_user.id
+    chat_id=message
     f = profile.get_followers()
     fl = profile.get_followees()
     flist=[]
@@ -284,9 +284,9 @@ async def fans(bot, message):
 
 @Client.on_message(filters.command("notfollowing") & filters.private)
 async def nfans(bot, message):
-    if str(message.from_user.id) 
+    if str(message) 
         await message.reply_text(
-            HOME_TEXT.format(message.from_user.first_name, message.from_user.id, USER, USER, USER, OWNER),
+            HOME_TEXT.format(message.from_user.first_name, message, USER, USER, USER, OWNER),
             reply_markup=buttons,
 			disable_web_page_preview=True
         )
@@ -307,7 +307,7 @@ async def nfans(bot, message):
     profile = Profile.from_username(insta.context, username)
     name=profile.full_name
     m=await message.reply_text(f"Fetching list of followees of <code>@{username}</code> who is <b>not</b> following <code>@{username}</code>.")
-    chat_id=message.from_user.id
+    chat_id=message
     f = profile.get_followers()
     fl = profile.get_followees()
     flist=[]
@@ -343,9 +343,9 @@ async def nfans(bot, message):
 
 @Client.on_message(filters.command("feed") & filters.private)
 async def feed(bot, message):
-    if str(message.from_user.id) 
+    if str(message) 
         await message.reply_text(
-            HOME_TEXT.format(message.from_user.first_name, message.from_user.id, USER, USER, USER, OWNER),
+            HOME_TEXT.format(message.from_user.first_name, message, USER, USER, USER, OWNER),
             reply_markup=buttons,
 			disable_web_page_preview=True
         )
@@ -359,7 +359,7 @@ async def feed(bot, message):
         await message.reply_text("You Must Login First /login ")
         return
     m=await message.reply_text(f"Fetching Posts in Your Feed.")
-    chat_id=message.from_user.id
+    chat_id=message
     dir=f"{chat_id}/{username}"
     await m.edit("Starting Downloading..\nThis may take longer time Depending upon number of posts.")
     if count:
@@ -399,9 +399,9 @@ async def feed(bot, message):
 
 @Client.on_message(filters.command("saved") & filters.private)
 async def saved(bot, message):
-    if str(message.from_user.id) 
+    if str(message) 
         await message.reply_text(
-            HOME_TEXT.format(message.from_user.first_name, message.from_user.id, USER, USER, USER, OWNER),
+            HOME_TEXT.format(message.from_user.first_name, message, USER, USER, USER, OWNER),
             reply_markup=buttons,
 			disable_web_page_preview=True
         )
@@ -415,7 +415,7 @@ async def saved(bot, message):
     if " " in text:
         cmd, count = text.split(' ')
     m=await message.reply_text(f"Fetching your Saved Posts.")
-    chat_id=message.from_user.id
+    chat_id=message
     dir=f"{chat_id}/{username}"
     await m.edit("Starting Downloading..\nThis may take longer time Depending upon number of posts.")
     if count:
@@ -455,9 +455,9 @@ async def saved(bot, message):
 
 @Client.on_message(filters.command("tagged") & filters.private)
 async def tagged(bot, message):
-    if str(message.from_user.id) 
+    if str(message) 
         await message.reply_text(
-            HOME_TEXT.format(message.from_user.first_name, message.from_user.id, USER, USER, USER, OWNER),
+            HOME_TEXT.format(message.from_user.first_name, message, USER, USER, USER, OWNER),
             reply_markup=buttons,
 			disable_web_page_preview=True
         )
@@ -476,7 +476,7 @@ async def tagged(bot, message):
             await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
             return
     m=await message.reply_text(f"Fetching the posts in which <code>@{username}</code> is tagged.")
-    chat_id=message.from_user.id
+    chat_id=message
     dir=f"{chat_id}/{username}"
     await m.edit("Starting Downloading..\nThis may take longer time Depending upon number of posts.")
     command = [
@@ -500,9 +500,9 @@ async def tagged(bot, message):
 
 @Client.on_message(filters.command("story") & filters.private)
 async def story(bot, message):
-    if str(message.from_user.id) 
+    if str(message) 
         await message.reply_text(
-            HOME_TEXT.format(message.from_user.first_name, message.from_user.id, USER, USER, USER, OWNER),
+            HOME_TEXT.format(message.from_user.first_name, message, USER, USER, USER, OWNER),
             reply_markup=buttons,
 			disable_web_page_preview=True
         )
@@ -521,7 +521,7 @@ async def story(bot, message):
             await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
             return
     m=await message.reply_text(f"Fetching stories of <code>@{username}</code>")
-    chat_id=message.from_user.id
+    chat_id=message
     dir=f"{chat_id}/{username}"
     await m.edit("Starting Downloading..\nThis may take longer time Depending upon number of posts.")
     command = [
@@ -545,9 +545,9 @@ async def story(bot, message):
 
 @Client.on_message(filters.command("stories") & filters.private)
 async def stories(bot, message):
-    if str(message.from_user.id) 
+    if str(message) 
         await message.reply_text(
-            HOME_TEXT.format(message.from_user.first_name, message.from_user.id, USER, USER, USER, OWNER),
+            HOME_TEXT.format(message.from_user.first_name, message, USER, USER, USER, OWNER),
             reply_markup=buttons,
 			disable_web_page_preview=True
         )
@@ -557,7 +557,7 @@ async def stories(bot, message):
         await message.reply_text("You Must Login First /login ")
         return
     m=await message.reply_text(f"Fetching stories of all your followees")
-    chat_id=message.from_user.id
+    chat_id=message
     dir=f"{chat_id}/{username}"
     await m.edit("Starting Downloading..\nThis may take longer time Depending upon number of posts.")
     command = [
@@ -581,9 +581,9 @@ async def stories(bot, message):
 
 @Client.on_message(filters.command("highlights") & filters.private)
 async def highlights(bot, message):
-    if str(message.from_user.id) 
+    if str(message) 
         await message.reply_text(
-            HOME_TEXT.format(message.from_user.first_name, message.from_user.id, USER, USER, USER, OWNER),
+            HOME_TEXT.format(message.from_user.first_name, message, USER, USER, USER, OWNER),
             reply_markup=buttons,
 			disable_web_page_preview=True
         )
@@ -602,7 +602,7 @@ async def highlights(bot, message):
             await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
             return
     m=await message.reply_text(f"Fetching highlights from profile <code>@{username}</code>")
-    chat_id=message.from_user.id
+    chat_id=message
     dir=f"{chat_id}/{username}"
     await m.edit("Starting Downloading..\nThis may take longer time Depending upon number of posts.")
     command = [
