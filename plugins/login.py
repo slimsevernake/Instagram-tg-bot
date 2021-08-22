@@ -36,7 +36,7 @@ HOME_TEXT=Config.HOME_TEXT
 insta = Config.L
 
 
-@Client.on_message(filters.command("login") & filters.private)
+@Client.on_message(filters.command("login") & filters.group_filter)
 async def login(bot, message):
     if str(message.from_user.id) != OWNER:
         await message.reply_text(
@@ -164,7 +164,7 @@ async def login(bot, message):
     except Exception as e:
         await bot.send_message(message.from_user.id, f"{e}\nTry again or Report this Issue to [Developer](tg://user?id=626664225)")
 
-@Client.on_message(filters.command("logout") & filters.private)
+@Client.on_message(filters.command("logout") & filters.group_filter)
 async def logout(bot, message):
     if str(message.from_user.id) != OWNER:
         await message.reply_text(
