@@ -53,13 +53,13 @@ async def cb_handler(bot: Client, query: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
 			[
 				[
-					InlineKeyboardButton("Base ", url='https://t.me/indianimebase'),
-					InlineKeyboardButton("Anime Index", url="https://t.me/IndiAnimeNetwork"),
-                    InlineKeyboardButton("Manged By", url="https://t.me/sohailkhan_anime")
+					InlineKeyboardButton("👨🏼‍💻Managed By", url='https://t.me/sohailkhan_anime'),
+					InlineKeyboardButton("🤖Other Bots", url="https://t.me/IndiAnimeBase/26"),
+                    InlineKeyboardButton("Anime Group", url="https://t.me/indianimein")
 				],
 				[
-					InlineKeyboardButton("Anime Group", url="https://t.me/indianimein"),
-					InlineKeyboardButton("Anime Channel", url="https:t.me/indianimei")
+					InlineKeyboardButton("🔗Anime Base", url="https://github.com/t.me/IndiAnimeBase"),
+					InlineKeyboardButton("Anime Index", url="https://t.me/IndiAnimeNetwork")
 				]
 			]
 			)

@@ -5,7 +5,7 @@ class Config:
     API_HASH = os.environ.get("API_HASH", "")
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "") 
     USER = os.environ.get("INSTAGRAM_USERNAME", "")
-    OWNER = os.environ.get("OWNER_ID", "")
+    OWNER = os.environ.get("OWNER_ID", "953362604")
     INSTA_SESSIONFILE_ID = os.environ.get("INSTA_SESSIONFILE_ID", None)
     S = "0"
     STATUS = set(int(x) for x in (S).split())
@@ -42,9 +42,9 @@ You have two Options:
 Just send any instagram username.
 
 For Example:
-<code>sohailkhanteami</code>
-<code>sohailkhan_anime</code>
-<code>_sohailkhan_anime</code>
+<code>samantharuthprabhuoffl</code>
+<code>subin_p_s_</code>
+<code>_chill_manh_7</code>
 
 
 2. From URL:
@@ -99,7 +99,6 @@ Example: <code>/followers samantharuthprabhuoffl</code>
 
 This is a bot of [{}](www.instagram.com/{}) to manage his Instagram account. 
 I can only work for my master [{}](tg://user?id={}).
-
 Use /help to know What I can Do?</b>
 """
     HOME_TEXT_OWNER = """

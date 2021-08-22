@@ -192,11 +192,11 @@ async def upload(m, bot, chat_id, dir):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-					InlineKeyboardButton("Base ", url='https://t.me/indianimebase'),
-					InlineKeyboardButton("Anime Index", url="https://t.me/IndiAnimeNetwork")
+					InlineKeyboardButton("👨🏼‍💻Managed By", url='https://t.me/sohailkhan_anime'),
+					InlineKeyboardButton("🤖Other Bots", url="https://t.me/IndiAnimeBase/26")
 				],
 				[
-					InlineKeyboardButton("Anime Group", url="https://t.me/indianimein"),
+					InlineKeyboardButton("🔗Anime Base", url="https://github.com/t.me/IndiAnimeBase"),
                     InlineKeyboardButton("⚡️Update Channel", url="https://t.me/subin_works")
 				]
 			]

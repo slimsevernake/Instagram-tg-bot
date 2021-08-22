@@ -40,16 +40,16 @@ insta = Config.L
 buttons=InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("Base ", url='https://t.me/indianimebase'),
+            InlineKeyboardButton("👨🏼‍💻Managed By", url='https://t.me/sohailkhan_anime'),
+            InlineKeyboardButton("🤖Other Bots", url="https://t.me/IndiAnimeBase/26")
+        ],
+        [
+            InlineKeyboardButton("🔗Anime Base", url="https://github.com/t.me/IndiAnimeBase"),
             InlineKeyboardButton("Anime Index", url="https://t.me/IndiAnimeNetwork")
         ],
         [
-            InlineKeyboardButton("Anime Group", url="https://t.me/indianimein"),
-            InlineKeyboardButton("Anime Channel", url="https:t.me/indianimei")
-        ],
-        [
             InlineKeyboardButton("👨🏼‍🦯How To Use?", callback_data="help#subin"),
-            InlineKeyboardButton("Manged By", url="https://t.me/sohailkhan_anime")
+            InlineKeyboardButton("Anime Group", url="https://t.me/indianimein")
         ]
 					
     ]
