@@ -70,14 +70,14 @@ async def cb_handler(bot: Client, query: CallbackQuery):
         profile = Profile.from_username(insta.context, username)
         profilepichd = profile.profile_pic_url
         await query.answer()
-        await bot.send_document(chat_id=query, document=profilepichd, file_name=f"{username}.jpg", force_document=True)
+        await bot.send_document(chat_id=query.from_user.id, document=profilepichd, file_name=f"{username}.jpg", force_document=True)
     
     
    
     elif query.data.startswith("post"):
         await query.message.delete()
         await bot.send_message(
-            query,
+            query.from_user.id,
             f"What type of post do you want to download?.",
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -97,7 +97,7 @@ async def cb_handler(bot: Client, query: CallbackQuery):
             await query.edit_message_text("There are no posts by the user")
             return
         m= await query.edit_message_text("Starting Downloading..\nThis may take time depending upon number of Posts.")      
-        dir=f"{query}/{username}"
+        dir=f"{query.from_user.id}/{username}"
         command = [
             "instaloader",
             "--no-metadata-json",
@@ -112,7 +112,7 @@ async def cb_handler(bot: Client, query: CallbackQuery):
             "--", username
             ]
         await download_insta(command, m, dir)
-        chat_id=query
+        chat_id=query.from_user.id
         await upload(m, bot, chat_id, dir)
     
 
@@ -122,7 +122,7 @@ async def cb_handler(bot: Client, query: CallbackQuery):
             await query.edit_message_text("There are no posts by the user")
             return
         m= await query.edit_message_text("Starting Downloading..\nThis may take longer time Depending upon number of posts.")    
-        dir=f"{query}/{username}"
+        dir=f"{query.from_user.id}/{username}"
         command = [
             "instaloader",
             "--no-metadata-json",
@@ -137,13 +137,13 @@ async def cb_handler(bot: Client, query: CallbackQuery):
             "--", username
             ]
         await download_insta(command, m, dir)
-        chat_id=query
+        chat_id=query.from_user.id
         await upload(m, bot, chat_id, dir)
 
     elif query.data.startswith("igtv"):
         await query.message.delete()
         await bot.send_message(
-            query,
+            query.from_user.id,
             f"Do you Want to download all IGTV posts?\nThere are {igtvcount} posts.",
             reply_markup=InlineKeyboardMarkup(
                 [
@@ -159,7 +159,7 @@ async def cb_handler(bot: Client, query: CallbackQuery):
             await query.edit_message_text("There are no IGTV posts by the user")
             return
         m= await query.edit_message_text("Starting Downloading..\nThis may take longer time Depending upon number of posts.")
-        dir=f"{query}/{username}"
+        dir=f"{query.from_user.id}/{username}"
 
         command = [
             "instaloader",
@@ -176,14 +176,14 @@ async def cb_handler(bot: Client, query: CallbackQuery):
             "--", username
             ]
         await download_insta(command, m, dir)
-        chat_id=query
+        chat_id=query.from_user.id
         await upload(m, bot, chat_id, dir)
 
 
 
     elif query.data.startswith("followers"):
         await query.message.delete()
-        chat_id=query
+        chat_id=query.from_user.id
         m=await bot.send_message(chat_id, f"Fetching Followers List of {name}")
         f = profile.get_followers()
         followers=f"**Followers List for {name}**\n\n"
@@ -209,7 +209,7 @@ async def cb_handler(bot: Client, query: CallbackQuery):
     
     elif query.data.startswith("followees"):
         await query.message.delete()
-        chat_id=query
+        chat_id=query.from_user.id
         m=await bot.send_message(chat_id, f"Fetching Followees of {name}")
         
         f = profile.get_followees()
@@ -240,8 +240,8 @@ async def cb_handler(bot: Client, query: CallbackQuery):
 
 
     else:
-        dir=f"{query}/{username}"
-        chat_id=query   
+        dir=f"{query.from_user.id}/{username}"
+        chat_id=query.from_user.id   
         await query.message.delete()
         m= await bot.send_message(chat_id, "Starting Downloading..\nThis may take longer time Depending upon number of posts.") 
         cmd, username = query.data.split("#")   

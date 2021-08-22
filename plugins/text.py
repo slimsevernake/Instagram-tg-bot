@@ -40,9 +40,9 @@ insta = Config.L
 
 @Client.on_message(filters.command("account") & filters.private)
 async def account(bot, message):
-    if str(message)
+    if str(message.from_user.id) != OWNER:
         await message.reply_text(
-            HOME_TEXT.format(message.from_user.first_name, message, USER, USER, USER, int(OWNER)), 
+            HOME_TEXT.format(message.from_user.first_name, message.from_user.id, USER, USER, USER, int(OWNER)), 
 			disable_web_page_preview=True,
 			reply_markup=InlineKeyboardMarkup(
 				[
@@ -108,7 +108,7 @@ async def account(bot, message):
                 )
             await m.delete()
             await bot.send_photo(
-                        chat_id=message,
+                        chat_id=message.from_user.id,
                         photo=profilepic,
                         caption=f"🏷 **Name**: {name}\n🔖 **Username**: {profile.username}\n📝**Bio**: {bio}\n📍 **Account Type**: {acc_type(profile.is_private)}\n🏭 **Is Business Account?**: {yes_or_no(profile.is_business_account)}\n👥 **Total Followers**: {followers}\n👥 **Total Following**: {following}\n📸 **Total Posts**: {mediacount}\n📺 **IGTV Videos**: {igtvcount}",
                         reply_markup=reply_markup
@@ -122,9 +122,9 @@ async def account(bot, message):
 
 @Client.on_message(filters.text & filters.private & filters.incoming)
 async def _insta_post_batch(bot, message):
-    if str(message) 
+    if str(message.from_user.id) != OWNER:
         await message.reply_text(
-            HOME_TEXT.format(message.from_user.first_name, message, USER, USER, USER, int(OWNER)),
+            HOME_TEXT.format(message.from_user.first_name, message.from_user.id, USER, USER, USER, int(OWNER)),
 			disable_web_page_preview=True,
 			reply_markup=InlineKeyboardMarkup(
 				[
@@ -151,7 +151,7 @@ async def _insta_post_batch(bot, message):
         await message.reply_text("You Must Login First /login ")
         return
     m = await message.reply_text("Fetching data from Instagram🔗")
-    chat_id= message
+    chat_id= message.from_user.id
     username=message.text
     if "https://instagram.com/stories/" in username:
         await m.edit("Stories from links are not yet supported🥴\n\nYou can download stories from Username.")
@@ -173,9 +173,9 @@ async def _insta_post_batch(bot, message):
         sent = await m.edit(f'`Fetching {supported} Content from Instagram.`')
         shortcode = result.group(2)
         try:
-            userid=str(message)
+            userid=str(message.from_user.id)
             dir=f"{userid}/{shortcode}"
-            chat_id=message
+            chat_id=message.from_user.id
             command = [
                 "instaloader",
                 "--no-metadata-json",
@@ -191,7 +191,7 @@ async def _insta_post_batch(bot, message):
             await upload(sent, bot, chat_id, dir)
         except Exception as e:
             print(e)
-            await bot.send_message(chat_id=message, text=e)
+            await bot.send_message(chat_id=message.from_user.id, text=e)
             pass
     elif "https://" in username:
         await m.edit('Unsupported Format')
