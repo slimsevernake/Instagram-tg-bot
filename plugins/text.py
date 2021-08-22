@@ -38,7 +38,7 @@ STATUS=Config.STATUS
 insta = Config.L
 
 
-@Client.on_message(filters.command("account") & filters.group)
+@Client.on_message(filters.command("account") & filters.private)
 async def account(bot, message):
     if str(message.from_user.id) != OWNER:
         await message.reply_text(
@@ -120,7 +120,7 @@ async def account(bot, message):
         await message.reply_text("You must login first by /login")
 
 
-@Client.on_message(filters.text & filters.group & filters.incoming)
+@Client.on_message(filters.text & filters.private & filters.incoming)
 async def _insta_post_batch(bot, message):
     if str(message.from_user.id) != OWNER:
         await message.reply_text(

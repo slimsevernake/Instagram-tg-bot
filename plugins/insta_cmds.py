@@ -58,7 +58,7 @@ buttons=InlineKeyboardMarkup(
 
 
 
-@Client.on_message(filters.command("posts") & filters.group)
+@Client.on_message(filters.command("posts") & filters.private)
 async def post(bot, message):
     if str(message.from_user.id) != OWNER:
         await message.reply_text(
@@ -94,7 +94,7 @@ async def post(bot, message):
         )
     
 
-@Client.on_message(filters.command("igtv") & filters.group)
+@Client.on_message(filters.command("igtv") & filters.private)
 async def igtv(bot, message):
     if str(message.from_user.id) != OWNER:
         await message.reply_text(
@@ -133,7 +133,7 @@ async def igtv(bot, message):
     
 
 
-@Client.on_message(filters.command("followers") & filters.group)
+@Client.on_message(filters.command("followers") & filters.private)
 async def followers(bot, message):
     if str(message.from_user.id) != OWNER:
         await message.reply_text(
@@ -178,7 +178,7 @@ async def followers(bot, message):
         os.remove(f"./{username}'s followers.txt")
 
 
-@Client.on_message(filters.command("followees") & filters.group)
+@Client.on_message(filters.command("followees") & filters.private)
 async def followees(bot, message):
     if str(message.from_user.id) != OWNER:
         await message.reply_text(
@@ -225,7 +225,7 @@ async def followees(bot, message):
 
 
 
-@Client.on_message(filters.command("fans") & filters.group)
+@Client.on_message(filters.command("fans") & filters.private)
 async def fans(bot, message):
     if str(message.from_user.id) != OWNER:
         await message.reply_text(
@@ -282,7 +282,7 @@ async def fans(bot, message):
         os.remove(f"./{username}'s fans.txt")
 
 
-@Client.on_message(filters.command("notfollowing") & filters.group)
+@Client.on_message(filters.command("notfollowing") & filters.private)
 async def nfans(bot, message):
     if str(message.from_user.id) != OWNER:
         await message.reply_text(
@@ -341,7 +341,7 @@ async def nfans(bot, message):
 
 
 
-@Client.on_message(filters.command("feed") & filters.group)
+@Client.on_message(filters.command("feed") & filters.private)
 async def feed(bot, message):
     if str(message.from_user.id) != OWNER:
         await message.reply_text(
@@ -397,7 +397,7 @@ async def feed(bot, message):
 
 
 
-@Client.on_message(filters.command("saved") & filters.group)
+@Client.on_message(filters.command("saved") & filters.private)
 async def saved(bot, message):
     if str(message.from_user.id) != OWNER:
         await message.reply_text(
@@ -453,7 +453,7 @@ async def saved(bot, message):
 
 
 
-@Client.on_message(filters.command("tagged") & filters.group)
+@Client.on_message(filters.command("tagged") & filters.private)
 async def tagged(bot, message):
     if str(message.from_user.id) != OWNER:
         await message.reply_text(
@@ -498,7 +498,7 @@ async def tagged(bot, message):
 
 
 
-@Client.on_message(filters.command("story") & filters.group)
+@Client.on_message(filters.command("story") & filters.private)
 async def story(bot, message):
     if str(message.from_user.id) != OWNER:
         await message.reply_text(
@@ -543,7 +543,7 @@ async def story(bot, message):
 
 
 
-@Client.on_message(filters.command("stories") & filters.group)
+@Client.on_message(filters.command("stories") & filters.private)
 async def stories(bot, message):
     if str(message.from_user.id) != OWNER:
         await message.reply_text(
@@ -579,7 +579,7 @@ async def stories(bot, message):
 
 
 
-@Client.on_message(filters.command("highlights") & filters.group)
+@Client.on_message(filters.command("highlights") & filters.private)
 async def highlights(bot, message):
     if str(message.from_user.id) != OWNER:
         await message.reply_text(
