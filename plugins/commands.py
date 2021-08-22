@@ -34,7 +34,7 @@ HOME_TEXT_OWNER=Config.HOME_TEXT_OWNER
 HELP=Config.HELP
 
 
-@Client.on_message(filters.command("start") & filters.group_filter)
+@Client.on_message(filters.command("start") & filters.group)
 async def start(bot, cmd):
 	if str(cmd.from_user.id) != OWNER:	
 		await cmd.reply_text(
@@ -83,7 +83,7 @@ async def start(bot, cmd):
 		)
 
 
-@Client.on_message(filters.command("help") & filters.group_filter)
+@Client.on_message(filters.command("help") & filters.group)
 async def help(bot, cmd):
 	await cmd.reply_text(
 		HELP,
@@ -104,7 +104,7 @@ async def help(bot, cmd):
 			)
 		)
 
-@Client.on_message(filters.command("restart") & filters.group_filter)
+@Client.on_message(filters.command("restart") & filters.group)
 async def stop(bot, cmd):
 	if str(cmd.from_user.id) != OWNER:	
 		await cmd.reply_text(
